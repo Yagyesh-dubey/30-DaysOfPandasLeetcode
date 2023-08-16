@@ -1,0 +1,10 @@
+import pandas as pd
+import numpy as np
+
+def food_delivery(delivery: pd.DataFrame) -> pd.DataFrame:
+    delivery['type_of_delivery'] = np.where(delivery['order_date'] == delivery['customer_pref_delivery_date'], 'Immediate' , 'Later date'     )
+    num_of_immediate= delivery['type_of_delivery'].value_counts().get('Immediate', 0)
+    count_row = delivery.shape[0]
+    percentage = round((num_of_immediate/count_row)* 100,2)
+    df = pd.DataFrame({'immediate_percentage': [percentage] })
+    return df
