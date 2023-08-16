@@ -1,0 +1,6 @@
+import pandas as pd
+
+def count_rich_customers(store: pd.DataFrame) -> pd.DataFrame:
+    highest_amounts = store.groupby('customer_id')['amount'].max()
+    c = (highest_amounts > 500).sum()
+    return pd.DataFrame({'rich_count': [c]})
