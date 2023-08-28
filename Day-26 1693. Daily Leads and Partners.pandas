@@ -1,0 +1,4 @@
+result = daily_sales.groupby(['date_id','make_name']).agg({
+        'lead_id':'nunique',
+        'partner_id':'nunique'
+    }).reset_index()
